@@ -36,7 +36,6 @@ try
 
     %-------------------------------------------------------------------------%
     %% Setup PLDAPS experiment
-    % this still acts on defaultParameters and needs to be called before openscreen
     if(~isfield(p.defaultParameters.session, 'experimentSetupFile') || ...
         isempty(p.defaultParameters.session.experimentSetupFile)    || ...
         ~exist( p.defaultParameters.session.experimentSetupFile, 'file'))
@@ -55,25 +54,17 @@ try
     p = ND_InitSession(p); % final itialization, needs to be called after openscreen
 
     % --------------------------------------------------------------------%
-    %% Last chance to check variables
-    if(p.defaultParameters.pldaps.pause)
-        disp('Ready to begin trials. Type return to start first trial...')
-        pause
-        p.trial.pldaps.pause = 0;
-    end
-
-    % --------------------------------------------------------------------%
     %% start recoding on all controlled components this in not currently done here
     % save timing info from all controlled components (datapixx, eyelink, this pc)
     p = ND_BeginExperiment(p);
 
     % disable keyboard
-    ListenChar(2)
-    HideCursor
+    ListenChar(2);
+    HideCursor;
 
     p.trial.flagNextTrial  = 0; % flag for ending the trial
-    p.trial.pldaps.quit = 0;
-    p.trial.pldaps.pause = 0;
+    p.trial.pldaps.quit    = 0;
+    p.trial.pldaps.pause   = 0;
 
     trialNr = 0;
     p.trial.pldaps.iTrial = 0;
@@ -101,8 +92,8 @@ try
             %% Start setting up trial
             trialNr = trialNr+1;
             p.defaultParameters.pldaps.iTrial = trialNr;
-            % --------------------------------------------------------------------%
             
+            % --------------------------------------------------------------------%
             %% update condition/block list
             % This has to be done before the block with addLevels and setLevels on defaultParameters
             p = ND_GenCndLst(p);
