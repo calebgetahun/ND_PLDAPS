@@ -17,4 +17,3 @@ if(p.trial.Drug.StimTrial == 1 && p.trial.Drug.StimDone == 0 && p.trial.CurTime 
     p.trial.Drug.StimDone = 1;
     p.defaultParameters.EV.Drug  = timings(1);
 end
-

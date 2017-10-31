@@ -248,35 +248,35 @@ SS.Block.BlockList      = [];
 SS.datapixx.useAsEyepos        = 0;
 
 % Default ADC channels to use (set up later in ND_InitSession)
-SS.datapixx.adc.XEyeposChannel = 0;
-SS.datapixx.adc.YEyeposChannel = 1;
-SS.datapixx.adc.PupilChannel   = 2;
+SS.datapixx.adc.XEyeposChannel       = 0;
+SS.datapixx.adc.YEyeposChannel       = 1;
+SS.datapixx.adc.PupilChannel         = 2;
 
 % Saccade parameters
-SS.behavior.fixation.use       =  0;       % does this task require control of eye position
+SS.behavior.fixation.use             =  0;        % does this task require control of eye position
 
-SS.behavior.fixation.on        =  0;       % If not required, fixation states will be ignored
-SS.behavior.fixation.Sample    = 25;       % how many data points to use for determining fixation state.
-SS.behavior.fixation.entryTime = 0.025;    % minimum time [s] before fixation is registered when gaze enters fixation window
-SS.behavior.fixation.BreakTime = 0.05;     % minimum time [s] to identify a fixation break
-SS.behavior.fixation.GotFix    = 0;        % state indicating if currently fixation is acquired
+SS.behavior.fixation.on              =  0;        % If not required, fixation states will be ignored
+SS.behavior.fixation.Sample          = 25;        % how many data points to use for determining fixation state.
+SS.behavior.fixation.entryTime       = 0.025;     % minimum time [s] before fixation is registered when gaze enters fixation window
+SS.behavior.fixation.BreakTime       = 0.05;      % minimum time [s] to identify a fixation break
+SS.behavior.fixation.GotFix          = 0;         % state indicating if currently fixation is acquired
 
-SS.behavior.fixation.MinFixStart = 0.1;    % minimum time gaze has to be in fixation window to start trial, if GiveInitial == 1 after this period a reward is given
+SS.behavior.fixation.MinFixStart     = 0.1;       % minimum time gaze has to be in fixation window to start trial, if GiveInitial == 1 after this period a reward is given
 
 % Calibration of eye position
 SS.behavior.fixation.useCalibration  = 1;         % load mat file for eye calibration
 SS.behavior.fixation.enableCalib     = 0;         % allow changing the current eye calibration parameters
-SS.eyeCalib.name                     = 'Default';        % Name of the calibration used. For back referencing in the data later
-SS.eyeCalib.file                     = 'nofile';   % THe file that stores the calibration information
+SS.eyeCalib.name                     = 'Default'; % Name of the calibration used. For back referencing in the data later
+SS.eyeCalib.file                     = 'nofile';  % THe file that stores the calibration information
 SS.eyeCalib.offsetTweak              = [0, 0];    % Additive tweak to the offset parameter  
 SS.eyeCalib.gainTweak                = [0, 0];    % Additive tweak to the gain parameter
 SS.behavior.fixation.calibTweakMode  = 'off';     % Parameter currently being tweaked
 SS.behavior.fixation.offsetTweakSize = 0.1;       % How much to tweak offset by in dva
-SS.behavior.fixation.gainTweakSize   = 0.03;       % How much to tweak gain by
-SS.eyeCalib.rawEye    = [];
-SS.eyeCalib.fixPos    = [];
-SS.eyeCalib.medRawEye = [];
-SS.eyeCalib.medFixPos = [];
+SS.behavior.fixation.gainTweakSize   = 0.03;      % How much to tweak gain by
+SS.eyeCalib.rawEye                   = [];
+SS.eyeCalib.fixPos                   = [];
+SS.eyeCalib.medRawEye                = [];
+SS.eyeCalib.medFixPos                = [];
 SS.behavior.fixation.calibSamples    = 200;    % analog eyesamples in the the datapixx to determine the position of an eye calibration point
 SS.behavior.fixation.NSmpls          = 50;     % how many datapixx samples of the eye position to be used to calculate the median
 
@@ -324,24 +324,24 @@ SS.pldaps.draw.eyepos.sz             = 8;   % size in pixels of the eye pos indi
 SS.pldaps.draw.eyepos.fixwinwdth_pxl = 2;   % frame width of the fixation window in pixels
 
 % Fixation spot stimuli
-SS.stim.FIXSPOT.pos     = [0,0];
-SS.stim.FIXSPOT.fixWin  =  4;         % diameter of fixation window in dva
-SS.stim.FIXSPOT.type    = 'disc';     % shape of fixation target, options implemented atm are 'disc' and 'rect', or 'off'
-SS.stim.FIXSPOT.color   = 'fixspot';  % color of fixation spot (as defined in the lookup tables)
-SS.stim.FIXSPOT.size    = 0.2;        % size of the fixation spot
-SS.behavior.fixation.fix.pos = [0,0]; % Somethings may rely on this, will be overwritten upon creation of first FixSpot
+SS.stim.FIXSPOT.pos            = [0,0];
+SS.stim.FIXSPOT.fixWin         =  4;        % diameter of fixation window in dva
+SS.stim.FIXSPOT.type           = 'disc';    % shape of fixation target, options implemented atm are 'disc' and 'rect', or 'off'
+SS.stim.FIXSPOT.color          = 'fixspot'; % color of fixation spot (as defined in the lookup tables)
+SS.stim.FIXSPOT.size           = 0.2;       % size of the fixation spot
+SS.behavior.fixation.fix.pos   = [0,0];     % Somethings may rely on this, will be overwritten upon creation of first FixSpot
 
 % Sine Wave Grating stimlui
-SS.stim.GRATING.sFreq    = 3; % Spatial frequency, cycles/deg
-SS.stim.GRATING.tFreq    = 0; % Temporal frequency, drift speed. 0 is no drift
-SS.stim.GRATING.angle    = 0; % Rotation
-SS.stim.GRATING.contrast = 1;
-SS.stim.GRATING.res      = 1000; % Half the size of the texture matrix
-SS.stim.GRATING.radius   = 1;
+SS.stim.GRATING.sFreq          = 3;         % Spatial frequency, cycles/deg
+SS.stim.GRATING.tFreq          = 0;         % Temporal frequency, drift speed. 0 is no drift
+SS.stim.GRATING.angle          = 0;         % Rotation
+SS.stim.GRATING.contrast       = 1;
+SS.stim.GRATING.res            = 1000;      % Half the size of the texture matrix
+SS.stim.GRATING.radius         = 1;
 SS.stim.GRATING.contrastMethod = 'balanced';
-SS.stim.GRATING.pos      = [0, 0];
-SS.stim.GRATING.fixWin   =  4;  
-SS.stim.GRATING.alpha    = 1; % Fully opaque
+SS.stim.GRATING.pos            = [0, 0];
+SS.stim.GRATING.fixWin         =  4;  
+SS.stim.GRATING.alpha          = 1;         % Fully opaque
 % SS.stim.GRATING.srcRadius  = 500; % Big source to allow for more resolution
 
 % ------------------------------------------------------------------------%
@@ -361,9 +361,9 @@ SS.behavior.joystick.RelThr  = 1.0;        % threshold to detect a joystick rele
 SS.pldaps.draw.joystick.use  = 1;          % draw joystick states on control screen
 
 % Define joystick states
-SS.JoyState.Current     = NaN;
-SS.JoyState.JoyHold     =   1;  % joystick pressed
-SS.JoyState.JoyRest     =   0;  % joystick released
+SS.JoyState.Current          = NaN;
+SS.JoyState.JoyHold          =   1;  % joystick pressed
+SS.JoyState.JoyRest          =   0;  % joystick released
 
 % ------------------------------------------------------------------------%
 %% Analog/digital input/output channels
