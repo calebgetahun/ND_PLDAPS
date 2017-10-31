@@ -164,7 +164,6 @@ end
 
 % --------------------------------------------------------------------%
 %% Map the ADC channels
-
 % Ensure that the channels vector and channelMapping cell array are initialized
 if(~isfield(p.defaultParameters.datapixx.adc, 'channels'))
     p.defaultParameters.datapixx.adc.channels = [];
@@ -212,24 +211,9 @@ end
 % We define conditions in the experimental setup file (that will be called after executing the
 % current function) or if nothing is defined use our default definition.
 p.conditions      = {};
-%p.Block.BlockList = [];
 
 % --------------------------------------------------------------------%
 %% helper functions
-
-% function p = CheckChannelExists(p, channm, chk)
-% % ensure that adc channels do exist
-%     if(isempty(p.defaultParameters.datapixx.adc.(channm)) || isnan(p.defaultParameters.datapixx.adc.(channm)) )
-%         if(chk == 1)
-%             error([channm, ' has no value assigned!']);
-%         end
-%     else
-%         if(~any(p.defaultParameters.datapixx.adc.channels == p.defaultParameters.datapixx.adc.(channm)))
-%             p.defaultParameters.datapixx.adc.channels = ...
-%                 sort([p.defaultParameters.datapixx.adc.channels, p.defaultParameters.datapixx.adc.(channm)]);
-%         end
-%     end
-
 % --------------------------------------------------------------------%
 function CheckUniqueNumbers(s)
 % make sure that all fields in a struct have unique numbers assigned

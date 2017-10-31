@@ -69,7 +69,16 @@ end
 
 % --------------------------------------------------------------------%
 %% Block control
-p.defaultParameters.Block.EqualCorrect = p.trial.Block.EqualCorrect;
+p.defaultParameters.Block.EqualCorrect   = p.trial.Block.EqualCorrect;
+p.defaultParameters.Block.Conditions     = p.trial.Block.Conditions;
+p.defaultParameters.Block.maxBlockTrials = p.trial.Block.maxBlockTrials; 
+
+% ------------------------------------------------------------------------%
+%% track drug application
+if(p.trial.Drug.DoStim)
+    p.defaultParameters.Drug.LastStimTrial = p.trial.Drug.LastStimTrial;
+    p.defaultParameters.Drug.LastStimTime  = p.trial.Drug.LastStimTime;
+end
 
 % --------------------------------------------------------------------%
 %% format string for ascii table

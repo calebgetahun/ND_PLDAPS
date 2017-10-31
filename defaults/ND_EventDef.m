@@ -76,6 +76,10 @@ if(p.defaultParameters.behavior.fixation.use)
     p.defaultParameters.EV.FixTargetStop  = NaN; % Stop of fixation on target
 end
 
+if(p.trial.Drug.DoStim)
+    p.defaultParameters.EV.Drug  = NaN; % Time of Drug application
+end
+    
 % ------------------------------------------------------------------------%
 %% Task encodes
 % it is the responsibility of the person programming tasks to use these encodes

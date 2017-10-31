@@ -1,4 +1,4 @@
-function ND_PulseSeries(chan, PulseDur, Npulse, GapDur, Nseries, SeriesPause, InjStrobe)
+function timings = ND_PulseSeries(chan, PulseDur, Npulse, GapDur, Nseries, SeriesPause, InjStrobe)
 
 % ToDO: detect if pldaps class is passed and derive parameters from there
 
@@ -32,7 +32,7 @@ if(~exist('InjStrobe','var') || isempty(InjStrobe))
 end
 
 % check if DataPixx needs to be opened
-if(~ Datapixx('IsReady'))
+if(~Datapixx('IsReady'))
     Datapixx('Open');
     Datapixx('RegWrRd');
     
@@ -46,7 +46,11 @@ for(j=1:Nseries)
     pds.datapixx.strobe(InjStrobe);
     
     for(i=1:Npulse)
-        pds.datapixx.TTL(chan, 1, PulseDur);
+        if(nargout ~= 0 && i == 1)
+            timings = pds.datapixx.TTL(chan, 1, PulseDur);
+        else
+            pds.datapixx.TTL(chan, 1, PulseDur);
+        end
         
         if(i < Npulse)
             WaitSecs(GapDur);

@@ -67,7 +67,7 @@ Datapixx('SetMarker');
 Datapixx('StartDoutSchedule');
 
 % If timings are requested, get them. Otherwise just send the signal
-if nargout ~= 0   
+if(nargout ~= 0) 
     t = nan(2,1);
     t(1) = GetSecs;
      
