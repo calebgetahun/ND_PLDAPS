@@ -79,6 +79,8 @@ if(p.trial.Drug.DoStim)
     p.defaultParameters.Drug.LastStimTrial = p.trial.Drug.LastStimTrial;
     p.defaultParameters.Drug.LastStimTime  = p.trial.Drug.LastStimTime;
     p.defaultParameters.Drug.TriggerStim   = p.trial.Drug.TriggerStim;
+    p.defaultParameters.Drug.BlockStart    = p.trial.Drug.BlockStart;
+    p.defaultParameters.Drug.StimTrial     = p.trial.Drug.StimTrial;
 end
 
 % --------------------------------------------------------------------%

@@ -42,12 +42,11 @@ p.trial.timing.datapixxPreciseTime(1:3) = [getsecs, boxsecs, confidence];
 % ------------------------------------------------------------------------%
 %% Reward
 %%% prepare reward system and pre-allocate variables for reward timings
-    p.trial.reward.timeReward = nan(100,2);
-    p.trial.reward.iReward     = 0; % counter for reward times
+p.trial.reward.timeReward = nan(100,2);
+p.trial.reward.iReward     = 0; % counter for reward times
     
 % ------------------------------------------------------------------------%
 %% eye position
-
 if(p.trial.pldaps.draw.eyepos.use)
     p.trial.eyeXY_draw = nan(1, 2);
 
@@ -79,9 +78,15 @@ if(p.trial.mouse.use)
 end
 
 % ------------------------------------------------------------------------%
+%% check if trial requires drug delivery
+if(p.trial.Drug.DoStim)
+    pds.drug.checkTrial(p);
+end
+
+% ------------------------------------------------------------------------%
 %% Spike Server
 % open a TDT connection
-if p.trial.tdt.use
+if(p.trial.tdt.use)
     pds.tdt.init(p);
 end
 
@@ -90,7 +95,7 @@ end
 outcomeStr = 'Outcomes --  ';
 allKeys = keys(p.trial.outcome.allOutcomes);
 
-for iKey = 1:length(allKeys)
+for(iKey = 1:length(allKeys))
     key = allKeys{iKey};
     outcomeStr = [outcomeStr key ':' mat2str(p.trial.outcome.allOutcomes(key)) '  '];
 end
@@ -124,7 +129,7 @@ p.trial.CurrEpoch                = NaN;  % keep track of task epochs
 p.trial.CurTime                  = NaN;  % keep track of current time
 p.trial.AllCurTimes              = nan(ceil(p.trial.pldaps.maxFrames),1);
 p.trial.behavior.fixation.GotFix =   0;  % assume no fixation at task start
-p.trial.reward.Curr         = p.trial.reward.defaultAmount;  % expected reward amount (set to default amount)
+p.trial.reward.Curr              = p.trial.reward.defaultAmount;  % expected reward amount (set to default amount)
 
 % ------------------------------------------------------------------------%
 %% Initialize default Timer

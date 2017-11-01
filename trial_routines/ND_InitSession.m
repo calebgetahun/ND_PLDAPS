@@ -89,6 +89,12 @@ if(p.defaultParameters.behavior.fixation.useCalibration)
 end
 
 %-------------------------------------------------------------------------%
+%% drug delivery
+if(p.trial.Drug.DoStim)
+    p = pds.drug.setup(p);
+end
+
+%-------------------------------------------------------------------------%
 %% reference dva grid
 if(p.defaultParameters.pldaps.draw.grid.use)
     % set up grid
