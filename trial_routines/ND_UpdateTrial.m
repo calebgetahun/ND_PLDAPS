@@ -78,6 +78,7 @@ p.defaultParameters.Block.maxBlockTrials = p.trial.Block.maxBlockTrials;
 if(p.trial.Drug.DoStim)
     p.defaultParameters.Drug.LastStimTrial = p.trial.Drug.LastStimTrial;
     p.defaultParameters.Drug.LastStimTime  = p.trial.Drug.LastStimTime;
+    p.defaultParameters.Drug.TriggerStim   = p.trial.Drug.TriggerStim;
 end
 
 % --------------------------------------------------------------------%

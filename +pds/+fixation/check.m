@@ -1,4 +1,6 @@
-function p = ND_CheckFixation(p)
+function p = check(p)
+% pds.fixation.check(p)
+%
 % Read in the eye position signal and check how much it deviates from a
 % defined position.
 %

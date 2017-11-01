@@ -392,9 +392,11 @@ SS.Drug.StimTrial     = 0;       % Is the current trial a drug trial
 SS.Drug.StimDesign    = 'block'; % What design (block, random, condition)
 SS.Drug.StimTime      = NaN;     % application time relative to task start
 SS.Drug.StimDone      = NaN;     % application time relative to task start
+SS.Drug.TriggerStim   = 0;     % trigger drug application for next trials
 SS.Drug.LastStimTrial = NaN;     % when was the last drug applicatio
 SS.Drug.LastStimTime  = NaN;     % when was the last drug applicatio
 SS.Drug.StimBlock     = 'trial'; % how to define a block, based on 'trial' or based on 'time'
+SS.Drug.BlockLength   = 1;       % Depending of SS.Drug.StimBlock this defines the length of a block as number of trials or duration in seconds
 
 % ------------------------------------------------------------------------%
 %% Control screen flips
@@ -419,6 +421,7 @@ SS.key.FixDec    = KbName('-_');     % decrease size of fixation window
 
 % trigger pico spritzer injection
 SS.key.spritz    = KbName('tab');    % Send a TTL pulse over the analog channel connected to the pico spritzer
+SS.key.drug      = KbName('d');    % Send a TTL pulse over the analog channel connected to the pico spritzer
 
 % block controll
 SS.key.BlockAdvance      = KbName('a'); % advance to next block

@@ -45,13 +45,13 @@ end
 % ------------------------------------------------------------------------%
 %% check fixation state
 if(p.trial.behavior.fixation.use)
-    ND_CheckFixation(p);
+    pds.fixation.check(p);
 end
 
 % ------------------------------------------------------------------------%
 %% check drug application
 if(p.trial.Drug.DoStim)
-    ND_GiveDrug(p);
+    pds.drug.give(p);
 end
  
 

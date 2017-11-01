@@ -125,6 +125,13 @@ if(any(p.trial.keyboard.firstPressQ))  % this only checks the first pressed key 
                 end
                 
             % ----------------------------------------------------------------%
+            case p.trial.key.drug
+            %% trigger a block of trials with drug application
+            if(p.trial.Drug.DoStim)
+                p.trial.Drug.TriggerStim = 1;
+            end
+                                
+            % ----------------------------------------------------------------%
             case p.trial.key.spritz
             %% Send a TTL pulse to the picospritzer to trigger drug release
                 ND_PulseSeries(p.trial.datapixx.TTL_spritzerChan,    p.trial.datapixx.TTL_spritzerDur,       ...
