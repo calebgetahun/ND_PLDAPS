@@ -50,6 +50,11 @@ if(isempty(state))
     p = ND_AddAsciiEntry(p, 'fixPos_X',    'p.trial.stim.fix.pos(1)',             '%.5f');
     p = ND_AddAsciiEntry(p, 'fixPos_Y',    'p.trial.stim.fix.pos(2)',             '.%5f');
     
+    if(p.defaultParameters.Drug.DoStim == 1)
+        p = ND_AddAsciiEntry(p, 'StimTrial', 'p.trial.Drug.StimTrial',            '.%5f');
+    else
+        p = ND_AddAsciiEntry(p, 'StimTrial', '0',                                 '.%5f');
+    end
     
     % call this after ND_InitSession to be sure that output directory exists!
     ND_Trial2Ascii(p, 'init');
@@ -60,13 +65,13 @@ if(isempty(state))
     % this is a good place to do so. To avoid conflicts with future changes in the set of default
     % colors, use entries later in the lookup table for the definition of task related colors.
 
-    p.trial.task.Color_list = Shuffle({'white', 'dRed', 'lRed', 'dGreen', 'orange', 'cyan'});  
-    p.trial.task.Color_list = {'white'};
+    p.defaultParameters.task.Color_list = Shuffle({'white', 'dRed', 'lRed', 'dGreen', 'orange', 'cyan'});  
+    p.defaultParameters.task.Color_list = {'white'};
     % --------------------------------------------------------------------%
     %% Enable random positions
-    p.trial.task.RandomPos = 0;
+    p.defaultParameters.task.RandomPos = 0;
     
-    p.trial.task.RandomPosRange = [5, 5];  % range of x and y dva for random position
+    p.defaultParameters.task.RandomPosRange = [5, 5];  % range of x and y dva for random position
     
     % --------------------------------------------------------------------%
     %% Determine conditions and their sequence
@@ -74,7 +79,6 @@ if(isempty(state))
     % cell array, or defined here within the main trial function. The
     % control of trials, especially the use of blocks, i.e. the repetition
     % of a defined number of trials per condition, needs to be clarified.
-
 
 else
     % ####################################################################### %
@@ -153,11 +157,15 @@ function TaskSetUp(p)
     % Reset the reward counter (separate from iReward to allow for manual rewards)
     p.trial.reward.count = 0;
     % Create arrays for direct reference during reward
-    p.trial.reward.allDurs = repelem(p.trial.reward.Dur,nRewards);
-    p.trial.reward.allPeriods = repelem(p.trial.reward.Period,nRewards);       
+    p.trial.reward.allDurs    = repelem(p.trial.reward.Dur,    nRewards);
+    p.trial.reward.allPeriods = repelem(p.trial.reward.Period, nRewards);       
     
     % Drug Signal Sent
     p.trial.task.drugSent = 0;
+    
+    if(p.trial.Drug.DoStim == 1)  % use drug delivery module
+        p.trial.Drug.StimTime = p.trial.EV.PlanStart;
+    end
     
     % Outcome if no fixation occurs at all during the trial
     p.trial.outcome.CurrOutcome = p.trial.outcome.NoFix;        
@@ -221,6 +229,7 @@ function TaskDesign(p)
             if p.trial.CurTime > p.trial.EV.epochEnd + p.trial.task.Timing.drugFlashDelay
                 switchEpoch(p,'TrialStart');
             end
+            
         % ----------------------------------------------------------------%  
         case p.trial.epoch.TrialStart
         %% trial starts with onset of fixation spot    
@@ -257,7 +266,7 @@ function TaskDesign(p)
                     
                     % Mark trial NoFix, go directly to TaskEnd, do not start task, do not collect reward
                     p.trial.outcome.CurrOutcome = p.trial.outcome.NoFix;
-                    switchEpoch(p,'TaskEnd')                   
+                    switchEpoch(p,'TaskEnd');                   
                 end
                 
                 
@@ -270,7 +279,7 @@ function TaskDesign(p)
                     pds.audio.playDP(p,'breakfix','left');
                     
                     % Turn the fixation spot off
-                    ND_FixSpot(p,0)
+                    ND_FixSpot(p,0);
                     
                     % Mark trial as breakfix and end the task
                     p.trial.outcome.CurrOutcome = p.trial.outcome.FixBreak;
@@ -291,9 +300,7 @@ function TaskDesign(p)
                     
                     % Transition to the succesful fixation epoch
                     switchEpoch(p,'Fixating');
-
                 end
-                
             end
             
         % ----------------------------------------------------------------%

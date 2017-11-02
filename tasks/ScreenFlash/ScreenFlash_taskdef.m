@@ -35,6 +35,10 @@ p.trial.reward.MaxWaitInitial = 0.50;
 %% Drug
 p.trial.task.useDrug = 0;
 
+p.trial.Drug.StimDesign  = 'block';   % What design (block, random, condition)
+p.trial.Drug.StimBlock   = 'trial';   % how to define a block, based on 'trial' or based on 'time'
+p.trial.Drug.BlockLength = [10, 40];  % Depending of SS.Drug.StimBlock this defines the length of a block as number of trials or duration in seconds
+
 % ------------------------------------------------------------------------%
 %% Timing
 p.trial.task.Timing.WaitFix = 0.100;    % Time to get a solid fixation before trial ends unsuccessfully
