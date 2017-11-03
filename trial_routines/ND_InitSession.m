@@ -90,7 +90,7 @@ end
 
 %-------------------------------------------------------------------------%
 %% drug delivery
-if(p.trial.Drug.DoStim)
+if(p.defaultParameters.Drug.DoStim)
     p = pds.drug.setup(p);
 end
 

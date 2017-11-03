@@ -7,7 +7,7 @@ function ND_TrialHDR(p)
 %         file about the header format to allow for easy/robust reconstruction
 %
 % BUG?  - TDT will not encode zero as value because it is no state change!
-%         This is a potential issue when encoding time stams...
+%         This is a potential issue when encoding time stamps...
 %
 % wolf zinke, Feb 2017
 

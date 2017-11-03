@@ -4,8 +4,10 @@ function p = setup(p)
 % 
 % wolf zinke, Nov 2017
 
-p.defaultParameters.Drug.TriggerStim = 0;
-p.defaultParameters.Drug.StimTrial   = 0;
+p.defaultParameters.Drug.TriggerStim = 0;   % trigger drug application for next trials
+p.defaultParameters.Drug.StimTrial   = 0;   % Is the current trial a drug trial
+p.defaultParameters.Drug.StimDone    = 0;   % flag that drug was delivered
+p.defaultParameters.Drug.StimTime    = NaN; % application time relative to task start
 
 % ensure that block lengths are specified for ON and OFF periods
 if(length(p.defaultParameters.Drug.BlockLength) == 1)

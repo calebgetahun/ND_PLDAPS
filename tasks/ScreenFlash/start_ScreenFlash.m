@@ -55,6 +55,8 @@ SS.pldaps.draw.eyepos.use     = 1; % enable drawing of the eye position.
 SS.pldaps.draw.photodiode.use = 0; % enable drawing the photo diode square
 SS.datapixx.useForReward      = 1; % use datapixx analog output for reward
 
+SS.Drug.DoStim                = 0; % activate module to control drug application
+
 % ------------------------------------------------------------------------%
 %% Set default variables
 

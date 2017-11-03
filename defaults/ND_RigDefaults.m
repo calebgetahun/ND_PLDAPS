@@ -389,16 +389,10 @@ SS.datapixx.TTL_spritzerSeriesGap = 30;   % gap between subsequent series
 %% Stimulation/Drug Injection
 SS.Drug.DoStim        = 0;       % activate module to control drug application
 
-SS.Drug.StimTrial     = 0;       % Is the current trial a drug trial
 SS.Drug.StimDesign    = 'block'; % What design (block, random, condition)
 SS.Drug.StimTime      = NaN;     % application time relative to task start
-SS.Drug.StimDone      = NaN;     % application time relative to task start
-SS.Drug.TriggerStim   = 0;     % trigger drug application for next trials
-SS.Drug.LastStimTrial = NaN;     % when was the last drug applicatio
-SS.Drug.LastStimTime  = NaN;     % when was the last drug applicatio
 SS.Drug.StimBlock     = 'trial'; % how to define a block, based on 'trial' or based on 'time'
 SS.Drug.BlockLength   = 1;       % Depending of SS.Drug.StimBlock this defines the length of a block as number of trials or duration in seconds
-SS.Drug.BlockStart    = 1;       % time stamp or trial number of drug block start
 
 % ------------------------------------------------------------------------%
 %% Control screen flips

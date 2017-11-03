@@ -76,7 +76,7 @@ if(p.defaultParameters.behavior.fixation.use)
     p.defaultParameters.EV.FixTargetStop  = NaN; % Stop of fixation on target
 end
 
-if(p.trial.Drug.DoStim)
+if(p.defaultParameters.Drug.DoStim)
     p.defaultParameters.EV.Drug  = NaN; % Time of Drug application
 end
     
