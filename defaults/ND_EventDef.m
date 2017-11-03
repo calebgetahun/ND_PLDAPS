@@ -122,11 +122,12 @@ p.defaultParameters.event.FIX_BRK_SPEED = 3003;
 % separate encode of reward delivered?
 
 % joystick related
-p.defaultParameters.event.JOY_PRESS     = 2100;    % joystick press detected
-p.defaultParameters.event.JOY_RELEASE   = 2101;    % joystick release detected
-p.defaultParameters.event.JOY_ON        = 2110;      % joystick elevation above pressing threshold
-p.defaultParameters.event.JOY_OFF       = 2111;      % joystick elevation below releasing threshold
-
+if(p.defaultParameters.datapixx.useJoystick || p.defaultParameters.behavior.joystick.use)
+    p.defaultParameters.event.JOY_PRESS     = 2100;    % joystick press detected
+    p.defaultParameters.event.JOY_RELEASE   = 2101;    % joystick release detected
+    p.defaultParameters.event.JOY_ON        = 2110;      % joystick elevation above pressing threshold
+    p.defaultParameters.event.JOY_OFF       = 2111;      % joystick elevation below releasing threshold
+end
 
 % visual stimulus
 p.defaultParameters.event.STIM_ON       = 130;     % stimulus onset
@@ -191,7 +192,7 @@ p.defaultParameters.event.TRIAL_HDR_OFF = 9900;
 
 %% task/stimulus parameters (NIY!)
 % #define	X_RF			5000
-% # define Y_RF		     	5100
+% #define   Y_RF		     	5100
 % #define	DIR_TGT_BASE	6000
 % #define	COND_NUM_BASE	7000
 % #define	UNCUE_TRL		8000
