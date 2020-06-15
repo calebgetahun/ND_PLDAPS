@@ -18,7 +18,7 @@ function p = RevCorr_taskdef(p)
 p.trial.tdt.use = 0;
 
 % UDP parameters
-p.trial.tdt.channels          = 16; % Number of ephys channels to analyze in incoming data
+p.trial.tdt.channels          = 32; % Number of ephys channels to analyze in incoming data
 p.trial.tdt.sortCodes         = 4;  % Number of units classified per channel. [1, 2, or 4]
 p.trial.tdt.bitsPerSort       = 2;  % Bits used to encode number of spikes for each unit. [1, 2, 4, or 8]
 
@@ -28,13 +28,13 @@ p.trial.RF.sortCodes = 1:2;  % Which sort codes to use
 
 %% Reward
 % manual reward from experimenter
-p.trial.reward.ManDur = 0.05;         % reward duration [s] for reward given by keyboard presses
+p.trial.reward.ManDur = 0.075;         % reward duration [s] for reward given by keyboard presses
 
-p.trial.reward.Dur    = 0.05;         % Reward given after each complete stim presentation
-p.trial.reward.Period = 0.25;
+p.trial.reward.Dur    = 0.03;         % Reward given after each complete stim presentation
+p.trial.reward.Period = 0.4;
 
-p.trial.reward.jackpotDur      = 0.12; % Reward for holding fixation until jackpotTime
-p.trial.reward.IncrConsecutive = 1;  % use rewarding scheme that gives more rewards with subsequent correct trials
+p.trial.reward.jackpotDur      = 0.08; % Reward for holding fixation until jackpotTime
+p.trial.reward.IncrConsecutive = 0;  % use rewarding scheme that gives more rewards with subsequent correct trials
 p.trial.reward.nPulse          = 1;  % number of reward pulses
 p.trial.reward.PulseStep       = [2,5]; % increase number of pulses with this trial number
 
@@ -45,8 +45,8 @@ p.trial.task.Timing.WaitFix = 4;    % Time to wait for fixation before NoStart
 % Main trial timings
 p.trial.task.fixLatency     = 0.15;  % Time to hold fixation before mapping begins
 
-p.trial.task.stimOnTime     = 0.1;   % How long each stimulus is presented
-p.trial.task.stimOffTime    = 0.1;   % Gaps between succesive stimuli
+p.trial.task.stimOnTime     = 0.25;   % How long each stimulus is presented
+p.trial.task.stimOffTime    = 0.25;   % Gaps between succesive stimuli
 
 p.trial.task.jackpotTime    = 6;   % How long stimuli are presented before trial ends and jackpot is given
 
@@ -71,18 +71,18 @@ p.trial.RF.maxSpikesPerTrial = 1000;   % Max spikes per trial, for preallocation
 %% fixation spot parameters
 p.trial.stim.FIXSPOT.pos    = [0,0];
 p.trial.stim.FIXSPOT.type   = 'disc';     % shape of fixation target, options implemented atm are 'disc' and 'rect', or 'off'
-p.trial.stim.FIXSPOT.color  = 'white';  % color of fixation spot (as defined in the lookup tables)
+p.trial.stim.FIXSPOT.color  = 'orange';  % color of fixation spot (as defined in the lookup tables)
 p.trial.stim.FIXSPOT.size   = 0.15;        % size of the fixation spot
 
 % ------------------------------------------------------------------------%
-%% Grating stimuli parameters
+%% Grating stimulus parameters
 p.trial.stim.GRATING.res    = 300;
 p.trial.stim.GRATING.fixWin = 0;
 
 % Will use a grid based layout to display the stimuli
-p.trial.stim.coarse.xRange = [-9, -1];
-p.trial.stim.coarse.yRange = [-9, -1];
-p.trial.stim.coarse.grdStp = 0.25;
+p.trial.stim.coarse.xRange = [-2.5, -0.5];
+p.trial.stim.coarse.yRange = [-2.5, -0.5];
+p.trial.stim.coarse.grdStp = 0.5;
 
 p.trial.stim.fine.extent = 2; % From the max value in the coarse mapping, extend out +- this far
 p.trial.stim.fine.grdStp = 0.1;
@@ -90,14 +90,14 @@ p.trial.stim.fine.grdStp = 0.1;
 % For the following parameters, an array can be specified and all possible combinations
 % will be tested.
 
-p.trial.stim.coarse.angle    = [0, 90];
+p.trial.stim.coarse.angle    = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5];
 p.trial.stim.fine.angle      = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5];
 
 p.trial.stim.coarse.radius   = 0.75;
-p.trial.stim.fine.radius     = 0.75;
+p.trial.stim.fine.radius     = .75;
 
 % spatial frequency (cycles per degree)
-p.trial.stim.coarse.sFreq    = 1.5;
+p.trial.stim.coarse.sFreq    = 2.5;
 p.trial.stim.fine.sFreq      = 1.5;
 
 % temporal frequency (cycles per second, 0 is stationary)
@@ -122,8 +122,8 @@ p.trial.task.breakFixCheck = 0.2; % Time after a stimbreak where if task is mark
 % TTL pulse series for pico spritzer
 p.trial.datapixx.TTL_spritzerChan      = 5;    % DIO channel
 p.trial.datapixx.TTL_spritzerDur       = 0.01; % duration of TTL pulse
-p.trial.datapixx.TTL_spritzerNpulse    = 1;    % number of pulses in a series
-p.trial.datapixx.TTL_spritzerPulseGap  = 0.01; % gap between subsequent pulses
+p.trial.datapixx.TTL_spritzerNpulse    = 10;    % number of pulses in a series
+p.trial.datapixx.TTL_spritzerPulseGap  = 0.2; % gap between subsequent pulses
 
 p.trial.datapixx.TTL_spritzerNseries   = 1;    % number of pulse series
 p.trial.datapixx.TTL_spritzerSeriesGap = 30 ;  % gap between subsequent series

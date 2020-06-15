@@ -121,8 +121,14 @@ function TaskSetUp(p)
         p.trial.stim.Ang = datasample(p.trial.stim.AngLst, 1);
     end
     
-    if(p.trial.task.RandomEcc == 1 || p.trial.task.RandomAng == 1)
-        [p.trial.stim.PosX, p.trial.stim.PosY] = pol2cart(p.trial.stim.Ang, p.trial.stim.Ecc);
+     if(p.trial.task.RandomEcc == 1 || p.trial.task.RandomAng == 1)
+      [p.trial.stim.PosX, p.trial.stim.PosY] = pol2cart(p.trial.stim.Ang, p.trial.stim.Ecc);
+     end
+    
+    if(p.trial.task.RandomEcc == 0 || p.trial.task.RandomAng == 0)
+      %  [p.trial.stim.PosX, p.trial.stim.PosY] = pol2cart(p.trial.stim.Ang, p.trial.stim.Ecc);
+      p.trial.stim.PosX = datasample(p.trial.stim.PosXlst, 1);
+      p.trial.stim.PosY = datasample(p.trial.stim.PosYlst, 1);
     end
         
     if(p.trial.task.RandomHemi == 1)

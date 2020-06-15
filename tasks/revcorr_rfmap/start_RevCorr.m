@@ -49,7 +49,7 @@ SS.editable = {'stim.count', 'stim.iStim', 'stim.iPos', 'stim.stage', 'stim.fine
 SS.sound.use                  = 1;
 SS.behavior.fixation.use      = 1; % eye position is behavioral relevant
 SS.behavior.joystick.use      = 0; % joystick is behavioral relevant
-SS.plot.do_online             = 1; % run online data analysis between two subsequent trials
+SS.plot.do_online             = 0; % run online data analysis between two subsequent trials
 SS.pldaps.nosave              = 0; % disable saving data to pds files
 SS.pldaps.draw.joystick.use   = 0; % draw joystick states on control screen
 SS.pldaps.draw.eyepos.use     = 1; % enable drawing of the eye position.
@@ -62,7 +62,7 @@ SS.datapixx.useAsEyepos       = 1;
 SS.datapixx.useJoystick       = 0;
 SS.datapixx.TTL_trialOn       = 0;
 
-SS.tdt.use                    = 1; % Get incoming UDP spike data from TDT
+SS.tdt.use                    = 0; % Get incoming UDP spike data from TDT
 
 SS.behavior.fixation.useCalibration = 1;
 SS.behavior.fixation.enableCalib = 0;

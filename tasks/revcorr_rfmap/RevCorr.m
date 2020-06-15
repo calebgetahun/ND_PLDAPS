@@ -114,9 +114,9 @@ else
                 KeyAction(p);
             end
             
-            ProcessSpikes(p);
+           % ProcessSpikes(p);
             TaskDesign(p);
-            Make_RF_VisualField(p);
+           % Make_RF_VisualField(p);
             % ----------------------------------------------------------------%
         case p.trial.pldaps.trialStates.frameDraw
             %% Display stuff on the screen
@@ -128,7 +128,7 @@ else
             % ----------------------------------------------------------------%
         case p.trial.pldaps.trialStates.trialCleanUpandSave
             TaskCleanAndSave(p);
-            Calculate_RF(p);
+            %Calculate_RF(p);
             %% trial end
             
             
@@ -223,7 +223,7 @@ p.trial.RF.visualField = nan(spatialRes,spatialRes,maxFrames);
 
 % Create a 2D matrix representing the identity of the stimuli that were on
 p.trial.RF.stimsOn = nan(length(p.trial.stim.gratings),maxFrames);
-
+% 
 p.trial.RF.spikes = nan(p.trial.RF.maxSpikesPerTrial,1);
 p.trial.RF.nSpikes = 0;
 
