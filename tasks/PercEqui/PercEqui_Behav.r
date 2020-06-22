@@ -8,7 +8,7 @@ require(ggplot2,  quietly=TRUE)
 require(quickpsy, quietly=TRUE)
 
 # Function for plotting data from the delayed saccade task
-PercEqui_Behav = function(datadir=NA, fname=NA) {
+PercEqui_Behav = function(datadir='/home/rig2-user/Data/ExpData/croc/2020_06_12/PercEqui', fname=NA) {
 
 ## specify analysis/graph parameters
 avrgwin  =   180  # moving average window for performance plot in seconds

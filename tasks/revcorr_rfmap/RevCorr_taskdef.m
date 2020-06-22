@@ -30,10 +30,10 @@ p.trial.RF.sortCodes = 1:2;  % Which sort codes to use
 % manual reward from experimenter
 p.trial.reward.ManDur = 0.075;         % reward duration [s] for reward given by keyboard presses
 
-p.trial.reward.Dur    = 0.03;         % Reward given after each complete stim presentation
+p.trial.reward.Dur    = 0.1;         % Reward given after each complete stim presentation
 p.trial.reward.Period = 0.4;
 
-p.trial.reward.jackpotDur      = 0.08; % Reward for holding fixation until jackpotTime
+p.trial.reward.jackpotDur      = 0.35; % Reward for holding fixation until jackpotTime
 p.trial.reward.IncrConsecutive = 0;  % use rewarding scheme that gives more rewards with subsequent correct trials
 p.trial.reward.nPulse          = 1;  % number of reward pulses
 p.trial.reward.PulseStep       = [2,5]; % increase number of pulses with this trial number

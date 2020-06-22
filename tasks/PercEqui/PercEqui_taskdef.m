@@ -22,7 +22,7 @@ p.trial.reward.IncrementDur   = [0.1, 0.15, 0.175, 0.2, 0.225, 0.25, 0.3]; % inc
 
 % ------------------------------------------------------------------------%
 %% Timing
-p.trial.behavior.fixation.MinFixStart = 0.1; % minimum time to wait for robust fixation
+p.trial.behavior.fixation.MinFixStart = 0.5; % minimum time to wait for robust fixation
 
 p.trial.task.Timing.WaitFix = 2;    % Time to fixate before NoStart
 

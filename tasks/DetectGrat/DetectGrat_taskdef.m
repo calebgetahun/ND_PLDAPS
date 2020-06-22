@@ -42,16 +42,16 @@ p.trial.task.Timing.ITI       = ND_GetITI(1.5, 2.25, [], [], 1, 0.10);
 % p.trial.stim.GRATING.radius = 0.75;  % radius of grating patch
 p.trial.stim.GRATING.tFreq  = 0;  % temporal frequency of grating; drift speed, 0 is stationary
 p.trial.stim.GRATING.res    = 300;
-p.trial.stim.GRATING.fixWin = 2;  %*p.trial.stim.GRATING.radius;
+p.trial.stim.GRATING.fixWin = 3;  %*p.trial.stim.GRATING.radius;
 
 %p.trial.stim.GRATING.radius = datasample([0.5, 0.75, 1], 1);  % radius of grating patch
-p.trial.stim.GRATING.radius = 1.0;  % radius of grating patch
+p.trial.stim.GRATING.radius = 1.5;  % radius of grating patch
 
 %p.trial.stim.EccLst = [ 2, 3, 3];
 %p.trial.stim.AngLst = [45, 0, -45];
 
 % grating contrast
-p.trial.stim.trgtconts = round(logspace(log10(0.035),log10(0.31), 8), 4)-0.01;
+p.trial.stim.trgtconts = round(logspace(log10(0.5),log10(0.5), 8), 4)-0.01;
 p.trial.stim.RespThr = 0.001; % contrast where it can be assumed the grating is seen
 
 % ------------------------------------------------------------------------%
